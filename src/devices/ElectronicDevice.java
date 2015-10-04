@@ -15,5 +15,5 @@ public interface ElectronicDevice {
     Memento createMemento();
     void setMemento(Memento memento);
 
-    void suscribe(ElectronicDeviceStateCaretaker caretaker);
+    boolean subscribe(ElectronicDeviceStateCaretaker caretaker);
 }

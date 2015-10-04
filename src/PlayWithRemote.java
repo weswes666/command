@@ -8,29 +8,33 @@ import devices.ElectronicDeviceStateCaretaker;
 public class PlayWithRemote {
 
     public static void main(String[] args) {
-        ElectronicDevice newDevice = UniversalRemote.getDevice("TV");
-        Command undoCommandTV = new UndoLastCommand(new ElectronicDeviceStateCaretaker(newDevice));
-        Command onCommand = new TurnTVOn(newDevice);
-        DeviceButton onPressed1 = new DeviceButton(onCommand);
-        DeviceButton onPressed2 = new DeviceButton(undoCommandTV);
+        try {
+            ElectronicDevice newDevice = UniversalRemote.getDevice("TV");
+            Command undoCommandTV = new UndoLastCommand(new ElectronicDeviceStateCaretaker(newDevice));
+            Command onCommand = new TurnTVOn(newDevice);
+            DeviceButton onPressed1 = new DeviceButton(onCommand);
+            DeviceButton onPressed2 = new DeviceButton(undoCommandTV);
 
-        onPressed1.press();
-        onPressed2.press();
+            onPressed1.press();
+            onPressed2.press();
 
-        newDevice = UniversalRemote.getDevice("CD");
-        Command undoCommandCD = new UndoLastCommand(new ElectronicDeviceStateCaretaker(newDevice));
-        Command complexCommandCD = new ComplexCommand(newDevice);
-        Command ofCommandCD = new TurnTVOf(newDevice);
-        DeviceButton onPressed3 = new DeviceButton(undoCommandCD);
-        DeviceButton onPressed4 = new DeviceButton(complexCommandCD);
-        DeviceButton onPressed5 = new DeviceButton(ofCommandCD);
+            newDevice = UniversalRemote.getDevice("CD");
+            Command undoCommandCD = new UndoLastCommand(new ElectronicDeviceStateCaretaker(newDevice));
+            Command complexCommandCD = new ComplexCommand(newDevice);
+            Command ofCommandCD = new TurnTVOf(newDevice);
+            DeviceButton onPressed3 = new DeviceButton(undoCommandCD);
+            DeviceButton onPressed4 = new DeviceButton(complexCommandCD);
+            DeviceButton onPressed5 = new DeviceButton(ofCommandCD);
 
-        onPressed4.press();
-        onPressed3.press();
-        onPressed3.press();
-        onPressed3.press();
-        onPressed5.press();
-        onPressed3.press();
+            onPressed4.press();
+            onPressed3.press();
+            onPressed3.press();
+            onPressed3.press();
+            onPressed5.press();
+            onPressed3.press();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

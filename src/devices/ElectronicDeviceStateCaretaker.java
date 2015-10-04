@@ -1,8 +1,5 @@
 package devices;
 
-import devices.ElectronicDevice;
-import devices.Memento;
-
 import java.util.Stack;
 
 /**
@@ -12,9 +9,11 @@ public class ElectronicDeviceStateCaretaker {
     ElectronicDevice mDevice;
     Stack<Memento> states = new Stack<>();
 
-    public ElectronicDeviceStateCaretaker(ElectronicDevice device){
+    public ElectronicDeviceStateCaretaker(ElectronicDevice device) throws Exception {
         mDevice = device;
-        mDevice.suscribe(this);
+        if(!mDevice.subscribe(this)){
+            throw new Exception("can't have more then one subscribtion per ElectronicDevice instance!");
+        }
     }
 
     public void update(){
