@@ -27,6 +27,8 @@ public class PlayWithRemote {
 
         onPressed4.press();
         onPressed3.press();
+        onPressed3.press();
+        onPressed3.press();
         onPressed5.press();
         onPressed3.press();
 
