@@ -15,6 +15,6 @@ public class UndoLastCommand implements Command {
 
     @Override
     public void execute() {
-
+        mCaretaker.restore();
     }
 }

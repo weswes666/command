@@ -9,9 +9,9 @@ import java.util.Map;
  * Created by wessel on 30/09/2015.
  */
 public class CDPlayer implements ElectronicDevice {
-    private static final String VOLUME_TYPE = "String";
-    private static final String IS_ON_TYPE = "Boolean";
-    private static final String DRIVE_ON_TYPE = "Boolean";
+    private static final String VOLUME_TYPE = "java.lang.Integer";
+    private static final String IS_ON_TYPE = "java.lang.Boolean";
+    private static final String DRIVE_ON_TYPE = "java.lang.Boolean";
     private static final String VOLUME = "volume";
     private static final String IS_ON = "isOn";
     private static final String DRIVE_ON = "driveOn";
@@ -89,6 +89,8 @@ public class CDPlayer implements ElectronicDevice {
 
     @Override
     public void setMemento(Memento memento) {
+        System.out.print("Old state: ");
+        prntState();
             memento.geState().entrySet().stream()
                     .forEach((entry) ->{
                         try {
@@ -98,6 +100,8 @@ public class CDPlayer implements ElectronicDevice {
                             return;
                         }
                     });
+        System.out.print("New state: ");
+        prntState();
     }
 
     @Override
@@ -140,6 +144,14 @@ public class CDPlayer implements ElectronicDevice {
         } catch (ClassNotFoundException e) {
             return false;
         }
+    }
+
+    private void prntState(){
+        System.out.println("state{");
+        prntVolume();
+        prntIsOn();
+        prntDriveOn();
+        System.out.println("}");
     }
 
     private void prntDriveOn() {

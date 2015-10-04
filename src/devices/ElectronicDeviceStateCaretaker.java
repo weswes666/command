@@ -22,6 +22,7 @@ public class ElectronicDeviceStateCaretaker {
     }
 
     public void restore(){
-        mDevice.setMemento(states.pop());
+        if(!states.empty())
+            mDevice.setMemento(states.pop());
     }
 }
