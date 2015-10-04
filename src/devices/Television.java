@@ -1,3 +1,13 @@
+package devices;
+
+import devices.ElectronicDevice;
+import devices.Memento;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by wessel on 30/09/2015.
  */
@@ -5,6 +15,7 @@ public class Television implements ElectronicDevice {
     private int volume = 0;
     private boolean isOn = false;
     private boolean driveOn = false;
+    private List<ElectronicDeviceStateCaretaker> mCaretakers = new ArrayList<>();
 
     public Television(){};
     private Television(int volume, boolean driveOn, boolean isOn) {
@@ -56,8 +67,26 @@ public class Television implements ElectronicDevice {
     }
 
     @Override
-    public ElectronicDevice clone() {
-        return new Television(this.volume, this.driveOn, this.isOn);
+    public Memento createMemento() {
+        Map<String, Object> state = new HashMap<>();
+
+
+        return new Memento(state);
+    }
+
+    @Override
+    public void setMemento(Memento memento) {
+
+    }
+
+    @Override
+    public void suscribe(ElectronicDeviceStateCaretaker caretaker) {
+        mCaretakers.add(caretaker);
+    }
+
+    private void notifyObservers(){
+        mCaretakers.stream()
+                .forEach(ElectronicDeviceStateCaretaker::update);
     }
 
     private void prntDriveOn() {

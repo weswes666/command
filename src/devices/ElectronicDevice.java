@@ -1,3 +1,5 @@
+package devices;
+
 /**
  * Created by wessel on 30/09/2015.
  */
@@ -10,6 +12,8 @@ public interface ElectronicDevice {
     void starVisualDrive();
     void stopVisualDrive();
     void setVolume(int volume);
-    ElectronicDevice clone();
+    Memento createMemento();
+    void setMemento(Memento memento);
 
+    void suscribe(ElectronicDeviceStateCaretaker caretaker);
 }

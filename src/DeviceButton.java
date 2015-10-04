@@ -1,3 +1,5 @@
+import Commands.Command;
+
 /**
  * Created by wessel on 30/09/2015.
  */

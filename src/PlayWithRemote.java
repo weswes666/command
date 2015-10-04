@@ -1,3 +1,8 @@
+import Commands.Command;
+import Commands.ComplexCommand;
+import Commands.TurnTVOn;
+import devices.ElectronicDevice;
+
 /**
  * Created by wessel on 30/09/2015.
  */
@@ -20,7 +25,6 @@ public class PlayWithRemote {
 
         onPressed.press();
 
-        complexCommand.undoCommand();
     }
 
 }

@@ -1,16 +1,16 @@
+package Commands;
+
+import Commands.Command;
+import devices.ElectronicDevice;
+
 /**
  * Created by wessel on 30/09/2015.
  */
 public class TurnTVOf implements Command {
     ElectronicDevice mDevice;
 
-    TurnTVOf(ElectronicDevice device){
+    public TurnTVOf(ElectronicDevice device){
         this.mDevice = device;
-    }
-
-    @Override
-    public void undoCommand() {
-        System.out.println("TurnTVOf can't be undone");
     }
 
     @Override
