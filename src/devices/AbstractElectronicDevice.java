@@ -87,8 +87,8 @@ public abstract class AbstractElectronicDevice implements ElectronicDevice{
                 .forEach((entry) -> {
                     try {
                         setProperty(entry);
-                    } catch (StateRestoreIncompleExeption stateRestoreIncompleExeption) {
-                        System.out.println(stateRestoreIncompleExeption.getMessage());
+                    } catch (StateRestoreIncompleteExeption stateRestoreIncompleteExeption) {
+                        System.out.println(stateRestoreIncompleteExeption.getMessage());
                         return;
                     }
                 });
@@ -109,7 +109,7 @@ public abstract class AbstractElectronicDevice implements ElectronicDevice{
         mCaretaker.update();
     }
 
-    private final  void setProperty(Map.Entry<String, Object> entry) throws StateRestoreIncompleExeption {
+    private final  void setProperty(Map.Entry<String, Object> entry) throws StateRestoreIncompleteExeption {
 
         switch (entry.getKey()) {
 
@@ -129,7 +129,7 @@ public abstract class AbstractElectronicDevice implements ElectronicDevice{
                 break;
 
             default:
-                throw new StateRestoreIncompleExeption();
+                throw new StateRestoreIncompleteExeption();
         }
     }
 
